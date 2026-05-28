@@ -116,7 +116,6 @@ Collaborate with Temple Allen engineering teams
 Narasimha Vemuganti
 📧 narasimha.vemuganti7@gmail.com
 
-🔗 GitHub: [Your GitHub Link]
 
 ⭐ Final Note
 

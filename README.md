@@ -2,7 +2,7 @@
 
 ## 🚀 Overview
 
-This project presents a predictive maintenance prototype for Temple Allen’s EMMA and SAM units, leveraging machine learning to detect early signs of equipment degradation and recommend proactive servicing.
+This project presents a predictive maintenance prototype for Robotic parts inspired from TempleAllen Insutries Airpressure operated Mechanical Arm Robotic parts, leveraging machine learning to detect early signs of equipment degradation and recommend proactive servicing.
 
 The goal is to move from reactive maintenance to intelligent, data-driven maintenance, improving reliability and enabling a scalable service model.
 

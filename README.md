@@ -1,4 +1,4 @@
-# 🔧 Sample Predictive Maintenance for MechArms - EMMA & SAM Units (Robotic Parts)
+# 🔧 Sample Predictive Maintenance for MechArms - Mechanical Robotic Parts for the Aviation Industry (Robotic Parts)
 
 ## 🚀 Overview
 

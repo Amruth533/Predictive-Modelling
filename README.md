@@ -1,4 +1,4 @@
-# 🔧 Sample Predictive Maintenance for MechArms - Mechanical Robotic Parts for the Aviation Industry (Robotic Parts)
+# 🔧Predictive Maintenance for MechArms - Mechanical Robotic Parts for the Aviation Industry (Robotic Parts)
 
 ## 🚀 Overview
 

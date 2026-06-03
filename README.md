@@ -1,122 +1,130 @@
-# Sample Predictive Maintenance for MechArms - EMMA & SAM Units (Robotic Parts)
-🚀 Overview
+# 🔧 Sample Predictive Maintenance for MechArms - EMMA & SAM Units (Robotic Parts)
+
+## 🚀 Overview
 
 This project presents a predictive maintenance prototype for Temple Allen’s EMMA and SAM units, leveraging machine learning to detect early signs of equipment degradation and recommend proactive servicing.
 
-The goal is to move from reactive maintenance → intelligent, data-driven maintenance, improving reliability and enabling a scalable service model.
+The goal is to move from reactive maintenance to intelligent, data-driven maintenance, improving reliability and enabling a scalable service model.
 
-🎯 Objective
-Predict potential maintenance needs using operational signals
-Reduce unexpected downtime
-Improve lifecycle performance of EMMA & SAM units
-Lay foundation for a SmartCare subscription service
-📂 Project Workflow
-1. Data Simulation
+---
+
+## 🎯 Objective
+
+- Predict potential maintenance needs using operational signals  
+- Reduce unexpected downtime  
+- Improve lifecycle performance of EMMA & SAM units  
+- Lay foundation for a SmartCare subscription service  
+
+---
+
+## 📂 Project Workflow
+
+### 1. Data Simulation
 
 Since real sensor data is unavailable, the model uses synthetic operational data simulating:
 
-Temperature
-Vibration
-Pressure
-Usage Hours
-2. Data Processing
-Cleaned and structured input features
-Defined threshold-based failure conditions
-Generated labeled dataset (maintenance_needed)
-3. Model Development
-Model: Random Forest Classifier
-Train-test split for validation
-Learned patterns indicating abnormal machine behavior
-4. Prediction Output
+- Temperature  
+- Vibration  
+- Pressure  
+- Usage Hours  
+
+---
+
+### 2. Data Processing
+
+- Cleaned and structured input features  
+- Engineered additional features:
+  - Vibration trends  
+  - Temperature trends  
+  - Lag features  
+  - Usage-based indicators  
+- Generated labeled dataset (`needs_maintenance`)  
+
+---
+
+### 3. Model Development
+
+- Model: **Random Forest Classifier**  
+- Train-test split for validation  
+- Addressed class imbalance for realistic predictions  
+- Learned patterns indicating abnormal machine behavior  
+
+---
+
+### 4. Prediction Output
 
 Each unit is classified as:
 
-✅ Working Fine
-⚠️ Maintenance Needed
-💻 Core Code Snippet
-import pandas as pd
-import numpy as np
+- ✅ Monitor (Working Fine)  
+- ⚠️ Schedule Maintenance  
+- 🚨 Immediate Maintenance  
+
+---
+
+## 📊 Model Performance
+
+- **Accuracy:** ~77%  
+- **ROC-AUC Score:** ~0.79  
+
+### Confusion Matrix
+
+![Confusion Matrix](images/confusion_matrix.png)
+
+### Key Insight
+
+- Balanced detection of failures vs false alarms  
+- Slightly higher false positives are acceptable to avoid critical breakdowns  
+
+---
+
+## 📈 Feature Importance
+
+![Feature Importance](images/feature_importance.png)
+
+Top contributing features:
+
+- Vibration  
+- Vibration Trend  
+- Usage Hours  
+- Temperature  
+- Pressure  
+
+👉 These align with real-world mechanical degradation patterns  
+
+---
+
+## 📉 ROC Curve
+
+![ROC Curve]<img width="1800" height="500" alt="Figure_5" src="https://github.com/user-attachments/assets/77b7ef44-de5a-4a53-8b6c-31895d6f49b9" />
+
+
+- Demonstrates good model separability  
+- Confirms reliable predictive capability  
+
+---
+
+## 🧠 Explainability (SHAP)
+
+![SHAP Summary]<img width="800" height="550" alt="Figure_4" src="https://github.com/user-attachments/assets/73d2033e-0c2a-4368-a54d-86f02eba26e4" />
+
+
+SHAP values were used to interpret model predictions.
+
+### Key Observations:
+
+- High vibration significantly increases failure probability  
+- Trend-based features are strong indicators of degradation  
+- Usage intensity contributes to wear and failure  
+
+👉 Ensures model decisions are transparent and trustworthy  
+
+---
+
+## 💻 Core Code Snippet
+
+```python
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
 
-# Generate synthetic data
-np.random.seed(42)
-data = pd.DataFrame({
-    "temperature": np.random.normal(70, 10, 1000),
-    "vibration": np.random.normal(5, 2, 1000),
-    "pressure": np.random.normal(30, 5, 1000),
-    "usage_hours": np.random.randint(100, 5000, 1000)
-})
-
-# Define maintenance condition
-data["maintenance_needed"] = (
-    (data["temperature"] > 85) |
-    (data["vibration"] > 8) |
-    (data["pressure"] > 40)
-).astype(int)
-
-# Train model
-X = data.drop("maintenance_needed", axis=1)
-y = data["maintenance_needed"]
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-model = RandomForestClassifier()
+model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
-
-# Predictions
-data["prediction"] = model.predict(X)
-🏗️ System Architecture (Concept)
-EMMA / SAM Units
-      ↓
-Sensor Data (Temp, Vibration, Pressure, Usage)
-      ↓
-Data Processing Pipeline
-      ↓
-ML Model (Random Forest)
-      ↓
-Prediction Layer
-      ↓
-Alerts / Dashboard / API
-📈 Business Impact
-🔹 Operational Value
-Early fault detection
-Reduced maintenance costs
-Increased uptime
-Better resource planning
-💰 Revenue Opportunity
-
-Temple Allen SmartCare (Subscription Model)
-
-Tier	Offering
-Basic	Monitoring dashboards
-Advanced	Predictive alerts
-Premium	Full diagnostics + service integration
-
-👉 Enables recurring revenue
-👉 Improves customer retention
-👉 Positions Temple Allen as a smart systems provider
-
-🔮 Future Enhancements
-Real-time IoT sensor integration
-Streaming pipelines (Kafka / AWS Kinesis)
-Advanced models (Anomaly Detection, LSTM)
-Dashboard (Streamlit / Power BI)
-API-based alerting system
-🤝 Collaboration
-
-This project is an early-stage prototype demonstrating how predictive analytics can enhance EMMA & SAM systems.
-
-I would be excited to:
-
-Work with real sensor data
-Productionize the pipeline
-Collaborate with Temple Allen engineering teams
-📬 Contact
-
-Narasimha Vemuganti
-📧 narasimha.vemuganti7@gmail.com
-
-
-⭐ Final Note
-
-This project reflects a vision of transforming EMMA and SAM into intelligent, self-aware systems, combining engineering excellence with data-driven innovation.
+predictions = model.predict(X_test)

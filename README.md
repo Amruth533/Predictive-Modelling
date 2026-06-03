@@ -68,7 +68,7 @@ Each unit is classified as:
 
 ### Confusion Matrix
 
-![Confusion Matrix](images/confusion_matrix.png)
+
 
 ### Key Insight
 
@@ -78,8 +78,6 @@ Each unit is classified as:
 ---
 
 ## 📈 Feature Importance
-
-![Feature Importance](images/feature_importance.png)
 
 Top contributing features:
 
